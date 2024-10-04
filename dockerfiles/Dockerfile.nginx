@@ -1,0 +1,20 @@
+ARG NGINX_VERSION=1.18.0
+
+FROM nginx:${NGINX_VERSION}-alpine
+
+ARG UID=499
+ARG NGINX_USER=nginxuser
+
+RUN addgroup -S ${NGINX_USER} && \
+    adduser -S -H \
+    -u "${UID}" \ 
+    -G ${NGINX_USER} \
+    ${NGINX_USER}
+
+COPY config/nginx/nginx.conf config/nginx/default.conf /etc/nginx/
+
+EXPOSE 80
+
+USER ${NGINX_USER}
+
+CMD nginx -g 'daemon off;'
