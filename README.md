@@ -9,4 +9,7 @@ docker compose --project-name myflaskapp --profile dev watch
 
 docker compose --project-name myflaskapp --profile prod watch
 
+# Wipe
+docker rm -f $(docker ps -a -q) && docker system prune -a -f --volumes && sudo rm -rf data/postgres
+
 # TODO
