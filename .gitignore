@@ -1,5 +1,8 @@
 data/
 
+# Real database credentials (copy environment/db.env.example)
+environment/db.env
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
